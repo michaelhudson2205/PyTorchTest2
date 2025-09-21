@@ -7,7 +7,7 @@ X = torch.tensor([
     [37.78]
 ], dtype=torch.float32)
 
-# Actual value: Temperature °F
+# Output (expected) value: Temperature °F
 y = torch.tensor([
     [50],
     [100.0]
@@ -25,7 +25,7 @@ for i in range(0, 150000):
     loss.backward()
     optimizer.step()
 
-    if i % 100 == 0: 
+    if i % 10000 == 0:
         print(model.bias)
         print(model.weight)
 
@@ -38,6 +38,4 @@ measurements = torch.tensor([
 model.eval()
 with torch.no_grad():
     prediction = model(measurements)
-    print(prediction)
-
-
+    print(f"Prediction: {prediction}")
